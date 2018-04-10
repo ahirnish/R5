@@ -1,0 +1,32 @@
+<p>My online journal homepage!!!</p>
+
+<ul>
+  {% for entry in entries %}
+    <li>{{ entry }}</li>
+  {% endfor %}
+  {% for bill in electricityBills %}
+    <li>{{ bill }}</li>
+  {% endfor %}
+  {% for avgProdReq in avgProdReqs %}
+    <li>{{ avgProdReq }}</li>
+  {% endfor %}
+  {% for production in productions %}
+    <li>{{ production }}</li>
+  {% endfor %}
+  {% for cwr in cwrValues %}
+    <li>{{ cwr }}</li>
+  {% endfor %}
+  {% for dist in distributions %}
+    <li>{{ dist }}</li>
+  {% endfor %}
+</ul>
+
+<ul>
+  <li><a href="/add_data/">Add a New Post</a></li>
+  <li><a href="/show_graph">See graph</a></li>
+  <li><a href="/add_electricity_bill">Add Electricity Bill</a></li>
+  <li><a href="/add_avg_production_requirement">Add Average Production Requirement</a></li>
+  <li><a href="/add_production">Add Water Production Data</a></li>
+  <li><a href="/add_cwr_value">Add CWR Value</a></li>
+  <li><a href="/add_distribution">Add Water Distribution data</a></li>
+</ul>

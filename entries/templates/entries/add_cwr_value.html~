@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CWR Values</title>
+    </head>
+
+    <body>
+        <h1>Add CWR Values for location date wise</h1>
+
+        <form id="data_form" method="post" action="/add_cwr_value/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+
+	    {% if messages %}
+	        {% for message in messages %}
+	             {{message}}
+	        {% endfor %}
+	    {% endif %}
+
+            <input type="submit" name="submit" value="Add CWR Value" />
+        </form>
+    </body>
+
+</html>

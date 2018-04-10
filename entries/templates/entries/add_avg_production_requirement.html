@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Average Production Requirement</title>
+    </head>
+
+    <body>
+        <h1>Add average production requirement month wise for Ajmer</h1>
+
+        <form id="data_form" method="post" action="/add_avg_production_requirement/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            <table>
+            {% for field in form.visible_fields %}
+            <tr>
+              <td>
+                {{ field.errors }}
+		{{ field.help_text }}
+		{{ field }}
+              </td>
+            </tr>
+            {% endfor %}
+            </table>
+
+            <input type="submit" name="submit" value="Add Avg Production Requirement" />
+        </form>
+    </body>
+
+    <a href="/">Home page</a>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Water Production Data</title>
+    </head>
+
+    <body>
+        <h1>Add daily water production for Bisalpur dam</h1>
+
+        <form id="data_form" method="post" action="/add_production/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            <table>
+            {% for field in form.visible_fields %}
+            <tr>
+              <td>
+                {{ field.errors }}
+		{{ field.help_text }}
+		{{ field }}
+              </td>
+            </tr>
+            {% endfor %}
+            </table>
+
+	    {% if form.non_field_errors %}
+	    <div class="non-field-errors">
+	      {% for err in form.non_field_errors %}
+	      <p style="color:red;">{{ err }}</p>
+	      {% if 'Average' in err %}
+	      <a href="/add_avg_production_requirement">Add Average Production Requirement</a>
+	      {% endif %}
+	      {% endfor %}
+	    </div>
+	    {% endif %}
+
+            <input type="submit" name="submit" value="Add daily water production data" />
+        </form>
+    </body>
+
+    <a href="/">Home page</a>
+
+</html>

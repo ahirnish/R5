@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Water Distribution Data</title>
+    </head>
+
+    <body>
+        <h1>Add daily water distribution</h1>
+
+        <form id="data_form" method="post" action="/add_distribution/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            <table>
+            {% for field in form.visible_fields %}
+            <tr>
+              <td>
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+              </td>
+            </tr>
+            {% endfor %}
+            </table>
+
+	    {% if form.non_field_errors %}
+	    <div class="non-field-errors">
+	      {% for err in form.non_field_errors %}
+	      <p style="color:red;">{{ err }}</p>
+	      {% endfor %}
+	    </div>
+	    {% endif %}
+
+            <input type="submit" name="submit" value="Add daily water distribution data" />
+        </form>
+    </body>
+
+    <a href="/">Home page</a>
+
+</html>

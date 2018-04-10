@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Electricity Bill</title>
+    </head>
+
+    <body>
+        <h1>Add billing entry</h1>
+
+        <form id="data_form" method="post" action="/add_electricity_bill/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            <table>
+            {% for field in form.visible_fields %}
+            <tr>
+              <td>
+                {{ field.errors }}
+		{{ field.help_text }}
+		{{ field }}
+              </td>
+            </tr>
+            {% endfor %}
+            </table>
+
+            <input type="submit" name="submit" value="Add Electricity Bill" />
+        </form>
+    </body>
+
+    <a href="/">Home page</a>
+
+</html>
